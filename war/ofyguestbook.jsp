@@ -15,6 +15,7 @@
 </head>
 
   <body>
+  <img src="old_tree.jpg" alt="Old Tree">
 <%
 	String guestbookName = request.getParameter("guestbookName");
 
@@ -42,8 +43,8 @@ to include your name with greetings you post.</p>
 %>
 
 <%
-	ObjectifyService.register(guestbook.Greeting.class);
-	List<guestbook.Greeting> greetings = ObjectifyService.ofy().load().type(guestbook.Greeting.class).list();
+	ObjectifyService.register(blog.Greeting.class);
+	List<blog.Greeting> greetings = ObjectifyService.ofy().load().type(blog.Greeting.class).list();
 	Collections.sort(greetings);
 	
 	if (greetings.isEmpty()) {
@@ -56,7 +57,7 @@ to include your name with greetings you post.</p>
 <p>Messages in Guestbook '${fn:escapeXml(guestbookName)}'.</p>
 
 <%
-	for (guestbook.Greeting greeting : greetings) {
+	for (blog.Greeting greeting : greetings) {
 		pageContext.setAttribute("greeting_content", greeting.getContent());
 		if (greeting.getUser() == null) {
 %>

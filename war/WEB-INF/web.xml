@@ -9,13 +9,13 @@
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
     
 	<servlet>
-		<servlet-name>guestbook</servlet-name>
-		<servlet-class>guestbook.GuestbookServlet</servlet-class>
+		<servlet-name>blog</servlet-name>
+		<servlet-class>blog.GuestbookServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>guestbook</servlet-name>
-		<url-pattern>/guestbook</url-pattern>
+		<servlet-name>blog</servlet-name>
+		<url-pattern>/blog</url-pattern>
 	</servlet-mapping>
 	
 	<welcome-file-list>
@@ -24,7 +24,7 @@
 	
 	<servlet>
 	    <servlet-name>sign</servlet-name>
-	    <servlet-class>guestbook.SignGuestbookServlet</servlet-class>
+	    <servlet-class>blog.SignGuestbookServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -34,7 +34,7 @@
 	
 	<servlet>
 	    <servlet-name>ofysign</servlet-name>
-	    <servlet-class>guestbook.OfySignGuestbookServlet</servlet-class>
+	    <servlet-class>blog.OfySignGuestbookServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
