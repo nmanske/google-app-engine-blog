@@ -20,7 +20,7 @@
 	String guestbookName = request.getParameter("guestbookName");
 
 	if (guestbookName == null) {
-		guestbookName = "default";
+		guestbookName = "Arvind & Nathan's Blog";
 	}
 
 	pageContext.setAttribute("guestbookName", guestbookName);
@@ -37,7 +37,7 @@
 %>
 <p>Hello!
 <a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-to include your name with greetings you post.</p>
+to post a new entry in the blog.</p>
 <%
     }
 %>
