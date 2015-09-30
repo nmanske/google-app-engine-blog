@@ -7,16 +7,6 @@
  -->
 
 <web-app xmlns="http://java.sun.com/xml/ns/javaee" version="2.5">
-    
-	<servlet>
-		<servlet-name>blog</servlet-name>
-		<servlet-class>blog.BlogServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-		<servlet-name>blog</servlet-name>
-		<url-pattern>/blog</url-pattern>
-	</servlet-mapping>
 	
 	<welcome-file-list>
 		<welcome-file>ofyblog.jsp</welcome-file>

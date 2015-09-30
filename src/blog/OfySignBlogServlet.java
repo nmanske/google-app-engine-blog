@@ -26,14 +26,23 @@ public class OfySignBlogServlet extends HttpServlet {
 		
 			UserService userService = UserServiceFactory.getUserService();
 			User user = userService.getCurrentUser();
-				
+			
+			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			
-			BlogEntry entry = new BlogEntry(user, content);
+			BlogEntry entry = new BlogEntry(title, user, content);
 			
 			ofy().save().entity(entry).now(); // synchronous			
 			
 			resp.sendRedirect("/ofyblog.jsp");
+			
+			/*if (user != null) {
+				resp.setContentType("text/plain");
+				resp.getWriter().println("Hello, " + user.getNickname());
+			}
+			else {
+				resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
+			}*/
 	}
 
 }

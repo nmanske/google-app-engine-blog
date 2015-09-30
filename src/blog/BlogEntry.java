@@ -9,16 +9,22 @@ import com.googlecode.objectify.annotation.Id;
 @Entity
 public class BlogEntry implements Comparable<BlogEntry> {
 		@Id Long id;
+		String title;
 		User user;
 		String content;
 		Date date;
 
 		private BlogEntry() {}
 		
-		public BlogEntry(User user, String content) {
+		public BlogEntry(String title, User user, String content) {
+			this.title = title;
 			this.user = user;
 			this.content = content;
 			date = Calendar.getInstance().getTime();
+		}
+		
+		public String getTitle() {
+			return title;
 		}
 
 		public User getUser() {

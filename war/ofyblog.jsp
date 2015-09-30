@@ -11,11 +11,11 @@
 <html>
 
 <head>
-<link type="text/css" rel="stylesheet" href="/stylesheets/main.css" />
+<link type="text/css" rel="stylesheet" href="/stylesheets/bootstrap.css" />
 </head>
 
   <body>
-  <img src="old_tree.jpg" alt="Old Tree">
+  <img src="old_tree.jpg" alt="Old Tree" height="282" width="375">
 <%
 	String blogName = request.getParameter("blogName");
 
@@ -50,23 +50,24 @@ to post a new entry in the blog.</p>
 	if (entries.isEmpty()) {
 %>
 
-<p>${fn:escapeXml(blogName)} has no entries.</p>
+<p>${fn:escapeXml(blogName)} has no blog entries!</p>
 
-<% } else { %>
+<% } else {
 
-<p>Messages in ${fn:escapeXml(blogName)}:</p>
-
-<%
 	for (blog.BlogEntry entry : entries) {
+		pageContext.setAttribute("entry_title", entry.getTitle());
 		pageContext.setAttribute("entry_content", entry.getContent());
 		pageContext.setAttribute("entry_user", entry.getUser());
 		pageContext.setAttribute("entry_date", entry.getDate());
 %>
+	<div>
+	<p><b>Title:</b> ${fn:escapeXml(entry_title)} <br>
+	<b>Author:</b> ${fn:escapeXml(entry_user.nickname)} <br>
+	<b>Date:</b> ${fn:escapeXml(entry_date)}</p>
+	</div>
 
-	<p><b>${fn:escapeXml(entry_user.nickname)}</b> wrote:</p>
-
-	<blackquote>${fn:escapeXml(entry_content)}</blockquote>
-
+	<blockquote>${fn:escapeXml(entry_content)}</blockquote>
+	<br><br>
 <%
 	}
 }%>
@@ -74,6 +75,7 @@ to post a new entry in the blog.</p>
 
 
 	<form action="/ofysign" method="post">
+	<div><p>Entry Title: </p><textarea name="title" rows="1" cols="30"></textarea></div>
 	<div><textarea name="content" rows="3" cols="60"></textarea></div>
 	<div><input type="submit" value="Post Entry" /></div>
 	<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
