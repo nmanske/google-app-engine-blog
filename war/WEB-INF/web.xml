@@ -10,7 +10,7 @@
     
 	<servlet>
 		<servlet-name>blog</servlet-name>
-		<servlet-class>blog.GuestbookServlet</servlet-class>
+		<servlet-class>blog.BlogServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
@@ -19,22 +19,12 @@
 	</servlet-mapping>
 	
 	<welcome-file-list>
-		<welcome-file>ofyguestbook.jsp</welcome-file>
+		<welcome-file>ofyblog.jsp</welcome-file>
 	</welcome-file-list>
 	
 	<servlet>
-	    <servlet-name>sign</servlet-name>
-	    <servlet-class>blog.SignGuestbookServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-	    <servlet-name>sign</servlet-name>
-	    <url-pattern>/sign</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
 	    <servlet-name>ofysign</servlet-name>
-	    <servlet-class>blog.OfySignGuestbookServlet</servlet-class>
+	    <servlet-class>blog.OfySignBlogServlet</servlet-class>
 	</servlet>
 	
 	<servlet-mapping>
