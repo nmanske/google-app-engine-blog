@@ -1,0 +1,11 @@
+<html>
+	<body>
+		<form action="/ofysign" method="post">
+		<div><p>Title: </p><input type="text" name="title"></div>
+		<div><p>Body:</p></div>
+		<div><textarea name="content" rows="3" cols="60"></textarea></div>
+		<div><input type="submit" value="Post Entry" /></div>
+		<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
+		</form>
+	</body>
+</html>

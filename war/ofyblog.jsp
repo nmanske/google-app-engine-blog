@@ -15,7 +15,7 @@
 </head>
 
   <body>
-  <img src="old_tree.jpg" alt="Old Tree" height="282" width="375">
+  <!--  <img src="old_tree.jpg" alt="Old Tree" height="282" width="375"> -->
 <%
 	String blogName = request.getParameter("blogName");
 
@@ -32,12 +32,15 @@
 %>
 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
+<form action="localhost:8888/new_entry.html">
+    <input type="submit" value="Submit New Entry">
+</form>
 <%
 	} else {
 %>
-<p>Hello anonymous person!
-<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">Sign in</a>
-to post a new entry in the blog.</p>
+<p>Hello Anonymous! You must 
+<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">sign in</a>
+to post a new blog entry!</p>
 <%
     }
 %>
@@ -67,19 +70,10 @@ to post a new entry in the blog.</p>
 	</div>
 
 	<blockquote>${fn:escapeXml(entry_content)}</blockquote>
-	<br><br>
+	<br>
 <%
 	}
 }%>
-
-
-
-	<form action="/ofysign" method="post">
-	<div><p>Entry Title: </p><textarea name="title" rows="1" cols="30"></textarea></div>
-	<div><textarea name="content" rows="3" cols="60"></textarea></div>
-	<div><input type="submit" value="Post Entry" /></div>
-	<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
-	</form>
 
   </body>
 </html>
