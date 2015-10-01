@@ -1,9 +1,6 @@
-/* URL: http://nmanske-lab2.appspot.com/ */
-
 package blog;
 
 import java.io.IOException;
-import java.util.Date;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -30,19 +27,13 @@ public class OfySignBlogServlet extends HttpServlet {
 			String title = req.getParameter("title");
 			String content = req.getParameter("content");
 			
-			BlogEntry entry = new BlogEntry(title, user, content);
-			
-			ofy().save().entity(entry).now(); // synchronous			
-			
-			resp.sendRedirect("/ofyblog.jsp");
-			
-			/*if (user != null) {
-				resp.setContentType("text/plain");
-				resp.getWriter().println("Hello, " + user.getNickname());
-			}
+			if (title.isEmpty() || user == null) resp.sendRedirect("/new_entry.html");
 			else {
-				resp.sendRedirect(userService.createLoginURL(req.getRequestURI()));
-			}*/
+				BlogEntry entry = new BlogEntry(title, user, content);
+				ofy().save().entity(entry).now(); // synchronous
+				resp.sendRedirect("/ofyblog.jsp");
+			}
+
 	}
 
 }

@@ -1,10 +1,23 @@
 <html>
+	<style>
+		body { background: powderblue !important; }
+		div {
+    		display: block;
+   		 	margin-left: auto;
+   			margin-right: auto;
+		}
+	</style>
 	<body>
 		<form action="/ofysign" method="post">
 		<div><p>Title: </p><input type="text" name="title"></div>
 		<div><p>Body:</p></div>
-		<div><textarea name="content" rows="3" cols="60"></textarea></div>
+		<div><textarea name="content" rows="15" cols="60"></textarea></div>
 		<div><input type="submit" value="Post Entry" /></div>
+		<div>
+			<a href="localhost:8888">
+  				<input type="button" value="Cancel" />
+			</a>
+		</div>
 		<input type="hidden" name="blogName" value="${fn:escapeXml(blogName)}"/>
 		</form>
 	</body>
