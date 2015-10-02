@@ -13,15 +13,17 @@ import com.googlecode.objectify.ObjectifyService;
 @SuppressWarnings("serial")
 public class GAEJCronServlet extends HttpServlet {
 
-	private static final Logger _logger = Logger.getLogger(GAEJCronServlet.class.getName());
+	private static final Logger log = Logger.getLogger(GAEJCronServlet.class.getName());
 
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		
+		
 		try {
-			_logger.info("Cron Job has been executed");
+			resp.setContentType("text/HTML");
+			log.info("Cron Job is currently running!");
 			
-			ObjectifyService.register(blog.BlogEntry.class);
-			List<blog.BlogEntry> entries = ObjectifyService.ofy().load().type(blog.BlogEntry.class).list();
-			Collections.sort(entries);
+			ObjectifyService.register(blog.SubscribeEntry.class);
+			List<blog.SubscribeEntry> subscriptionEntries = ObjectifyService.ofy().load().type(blog.SubscribeEntry.class).list();	
 			
 			//Put your logic here
 			//BEGIN

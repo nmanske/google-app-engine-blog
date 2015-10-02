@@ -1,3 +1,4 @@
+<%@page import="blog.SubscribeEntry"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="java.util.List" %>
 <%@ page import="com.google.appengine.api.users.User" %>
@@ -34,12 +35,35 @@
 	pageContext.setAttribute("blogName", blogName);
 	UserService userService = UserServiceFactory.getUserService();
 	User user = userService.getCurrentUser();
-	
 	if (user != null) {
 		pageContext.setAttribute("user", user);
 %>
 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
+
+<% 
+// BOOKMARK
+ObjectifyService.register(blog.SubscribeEntry.class);
+List<blog.SubscribeEntry> subscriptionEntries = ObjectifyService.ofy().load().type(blog.SubscribeEntry.class).list();
+System.out.println("SIZE OF SUBSCRIPTION LIST: " + subscriptionEntries.size());
+
+// THE LINE BELOW MAY NOT BE VALID WAY OF DETERMINING WHETHER OR NOT A USER IS SUBSCRIBED
+if (!subscriptionEntries.contains(user)) {
+	// FIND A WAY TO INVOKE SUBSCRIBE SERVLET WHEN PRESSING EITHER BUTTON BELOW
+%>
+
+<form action="/ofysubscribe" method="post">
+	<input type="submit" name="subscribeButton" value="Subscribe" />
+</form>
+
+<% } else { %>
+
+<form action="/ofysubscribe" method="post">
+	<input type="submit" name="unsubscribeButton" value="Unsubscribe" />
+</form>
+
+<% } %>
+
 <form action="http://nmanske-asundaram-blog.appspot.com/new_entry.html">
     <input type="submit" value="Submit New Entry">
 </form>
