@@ -13,16 +13,6 @@
 	</welcome-file-list>
 	
 	<servlet>
-	    <servlet-name>ofysubscribe</servlet-name>
-	    <servlet-class>blog.OfySubscribeServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-	    <servlet-name>ofysubscribe</servlet-name>
-	    <url-pattern>/ofysubscibe</url-pattern>
-	</servlet-mapping>
-	
-	<servlet>
 	    <servlet-name>ofysign</servlet-name>
 	    <servlet-class>blog.OfySignBlogServlet</servlet-class>
 	</servlet>
@@ -51,5 +41,15 @@
 		<filter-name>ObjectifyFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
+	
+	<servlet>
+	    <servlet-name>ofysubscribe</servlet-name>
+	    <servlet-class>blog.OfySubscribeServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+	    <servlet-name>ofysubscribe</servlet-name>
+	    <url-pattern>/ofysubscribe</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

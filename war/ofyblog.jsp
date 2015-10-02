@@ -47,6 +47,10 @@ ObjectifyService.register(blog.SubscribeEntry.class);
 List<blog.SubscribeEntry> subscriptionEntries = ObjectifyService.ofy().load().type(blog.SubscribeEntry.class).list();
 System.out.println("SIZE OF SUBSCRIPTION LIST: " + subscriptionEntries.size());
 
+for (blog.SubscribeEntry sEntry : subscriptionEntries){
+	System.out.println("SUBSCRIBE LIST INFO:"+sEntry);
+}
+
 // THE LINE BELOW MAY NOT BE VALID WAY OF DETERMINING WHETHER OR NOT A USER IS SUBSCRIBED
 if (!subscriptionEntries.contains(user)) {
 	// FIND A WAY TO INVOKE SUBSCRIBE SERVLET WHEN PRESSING EITHER BUTTON BELOW

@@ -25,12 +25,10 @@ public class GAEJCronServlet extends HttpServlet {
 			ObjectifyService.register(blog.SubscribeEntry.class);
 			List<blog.SubscribeEntry> subscriptionEntries = ObjectifyService.ofy().load().type(blog.SubscribeEntry.class).list();	
 			
-			//Put your logic here
-			//BEGIN
-			//END
+			
 		}
 		catch (Exception ex) {
-			//Log any exceptions in your Cron Job
+			
 		}
 	}
 
