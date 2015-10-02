@@ -8,8 +8,6 @@
 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<% final int max_entries = 3; %>
-
 <html>
 
 <head>
@@ -24,6 +22,9 @@
 <body>
   
   <!--  <img src="old_tree.jpg" alt="Old Tree" height="282" width="375"> -->
+  	<form action="http://nmanske-asundaram-blog.appspot.com/">
+    	<input type="submit" value="Return to Home">
+	</form>
 <%
 	String blogName = request.getParameter("blogName");
 
@@ -34,23 +35,6 @@
 	pageContext.setAttribute("blogName", blogName);
 	UserService userService = UserServiceFactory.getUserService();
 	User user = userService.getCurrentUser();
-	
-	if (user != null) {
-		pageContext.setAttribute("user", user);
-%>
-<p>Hello, ${fn:escapeXml(user.nickname)}! (You can
-<a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
-<form action="http://nmanske-asundaram-blog.appspot.com/new_entry.html">
-    <input type="submit" value="Submit New Entry">
-</form>
-<%
-	} else {
-%>
-<p>Hello Anonymous! You must 
-<a href="<%= userService.createLoginURL(request.getRequestURI()) %>">sign in</a>
-to post a new blog entry!</p>
-<%
-    }
 %>
 
 <%
@@ -58,17 +42,7 @@ to post a new blog entry!</p>
 	List<blog.BlogEntry> entries = ObjectifyService.ofy().load().type(blog.BlogEntry.class).list();
 	Collections.sort(entries);
 	
-	if (entries.isEmpty()) {
-%>
-
-<p>${fn:escapeXml(blogName)} has no blog entries!</p>
-
-<% } else {
-	int count = 0;
 	for (blog.BlogEntry entry : entries) {
-		
-		if (count == max_entries || count == entries.size()) 
-			break;
 		
 		pageContext.setAttribute("entry_title", entry.getTitle());
 		pageContext.setAttribute("entry_content", entry.getContent());
@@ -89,14 +63,12 @@ to post a new blog entry!</p>
 	</div>
 
 <%
-		count++;
 	}
-	if (entries.size() > 3) { %>
-		<form action="http://nmanske-asundaram-blog.appspot.com/all_entries.jsp">
-    		<input type="submit" value="View All Entries">
-		</form>
-<%	}
-}%>
+%>
+
+<form action="http://nmanske-asundaram-blog.appspot.com/">
+    <input type="submit" value="Return to Home">
+</form>
 
 </body>
 </html>

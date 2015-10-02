@@ -22,6 +22,16 @@
 	    <url-pattern>/ofysign</url-pattern>
 	</servlet-mapping>
 	
+	<servlet>
+		<servlet-name>GAEJCronServlet</servlet-name>
+		<servlet-class>com.gaejexperiments.cron.GAEJCronServlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>GAEJCronServlet</servlet-name>
+		<url-pattern>/cron/dailyreport</url-pattern>
+	</servlet-mapping>
+	
 	<filter>
 		<filter-name>ObjectifyFilter</filter-name>
 		<filter-class>com.googlecode.objectify.ObjectifyFilter</filter-class>
