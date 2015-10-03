@@ -14,7 +14,7 @@
 <html>
 
 <head>
-	<title>Arvind & Nathan's Blog!</title>
+	<title>Nathan and Arvind's Blog!</title>
 	<link rel="stylesheet" href="/stylesheets/bootstrap.css"/>
 	<style>
 		body { background: powderblue !important; }
@@ -24,7 +24,11 @@
 
 <body>
   
-  <!--  <img src="old_tree.jpg" alt="Old Tree" height="282" width="375"> -->
+  <center><h1>Welcome to Nathan and Arvind's Blog</h1></center>
+  <center><a href="/index.html"><img src="old_tree.jpg" alt="Old Tree" height="141" width="188"></a></center>	
+  <p>We created this blog for our first homework assignment
+  for EE 461L at the University of Texas. We are both students in the ECE department. We hope
+  that you enjoy the blog as much as we enjoyed making it!</p>
 <%
 	String blogName = request.getParameter("blogName");
 
@@ -41,34 +45,15 @@
 <p>Hello, ${fn:escapeXml(user.nickname)}! (You can
 <a href="<%= userService.createLogoutURL(request.getRequestURI()) %>">sign out</a>.)</p>
 
-<% 
-// BOOKMARK
-ObjectifyService.register(blog.SubscribeEntry.class);
-List<blog.SubscribeEntry> subscriptionEntries = ObjectifyService.ofy().load().type(blog.SubscribeEntry.class).list();
-System.out.println("SIZE OF SUBSCRIPTION LIST: " + subscriptionEntries.size());
-
-for (blog.SubscribeEntry sEntry : subscriptionEntries){
-	System.out.println("SUBSCRIBE LIST INFO:"+sEntry);
-}
-
-// THE LINE BELOW MAY NOT BE VALID WAY OF DETERMINING WHETHER OR NOT A USER IS SUBSCRIBED
-if (!subscriptionEntries.contains(user)) {
-	// FIND A WAY TO INVOKE SUBSCRIBE SERVLET WHEN PRESSING EITHER BUTTON BELOW
-%>
-
-<form action="/ofysubscribe" method="post">
+<form action="/subscribe.jsp" method="post">
 	<input type="submit" name="subscribeButton" value="Subscribe" />
 </form>
 
-<% } else { %>
-
-<form action="/ofysubscribe" method="post">
+<form action="/unsubscribe.jsp" method="post">
 	<input type="submit" name="unsubscribeButton" value="Unsubscribe" />
 </form>
 
-<% } %>
-
-<form action="http://nmanske-asundaram-blog.appspot.com/new_entry.html">
+<form action="/new_entry.html">
     <input type="submit" value="Submit New Entry">
 </form>
 <%
@@ -120,7 +105,7 @@ to post a new blog entry!</p>
 		count++;
 	}
 	if (entries.size() > 3) { %>
-		<form action="http://nmanske-asundaram-blog.appspot.com/all_entries.jsp">
+		<form action="/all_entries.jsp">
     		<input type="submit" value="View All Entries">
 		</form>
 <%	}

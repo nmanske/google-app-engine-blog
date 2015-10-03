@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cronentries>
 	<cron>
-	    <url>/cron/dailyreport</url>
+	    <url>/sendmail</url>
 	    <description>Send digest of any new posts at 5 pm each day</description>
 	    <schedule>every 2 minutes</schedule>
 	    <timezone>America/Chicago</timezone>

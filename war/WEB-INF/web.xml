@@ -23,13 +23,13 @@
 	</servlet-mapping>
 	
 	<servlet>
-		<servlet-name>GAEJCronServlet</servlet-name>
-		<servlet-class>com.gaejexperiments.cron.GAEJCronServlet</servlet-class>
+	    <servlet-name>sendmail</servlet-name>
+	    <servlet-class>blog.SendMail</servlet-class>
 	</servlet>
-
+	
 	<servlet-mapping>
-		<servlet-name>GAEJCronServlet</servlet-name>
-		<url-pattern>/cron/dailyreport</url-pattern>
+	    <servlet-name>sendmail</servlet-name>
+	    <url-pattern>/sendmail</url-pattern>
 	</servlet-mapping>
 	
 	<filter>
@@ -41,15 +41,5 @@
 		<filter-name>ObjectifyFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
-	<servlet>
-	    <servlet-name>ofysubscribe</servlet-name>
-	    <servlet-class>blog.OfySubscribeServlet</servlet-class>
-	</servlet>
-	
-	<servlet-mapping>
-	    <servlet-name>ofysubscribe</servlet-name>
-	    <url-pattern>/ofysubscribe</url-pattern>
-	</servlet-mapping>
 	
 </web-app>

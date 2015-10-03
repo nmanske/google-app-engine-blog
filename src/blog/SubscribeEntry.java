@@ -1,25 +1,27 @@
 package blog;
 
-import com.google.appengine.api.users.User;
-import com.googlecode.objectify.annotation.Entity;
-import com.googlecode.objectify.annotation.Id;
-
-@Entity
 public class SubscribeEntry {
-	@Id Long id;
-	User user;
+	String firstName;
+	String lastName;
+	String userEmail;
 	
 	private SubscribeEntry() {}
 	
-	public SubscribeEntry(User user) {
-		this.user = user;
+	public SubscribeEntry(String firstName, String lastName, String userEmail) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.userEmail = userEmail;
 	}
 	
-	public String getUserName() {
-		return user.getNickname();
+	public String getFirstName() {
+		return firstName;
 	}
 	
-	public String getUserEmail() {
-		return user.getEmail();
+	public String getLastName() {
+		return lastName;
+	}
+	
+	public String getEmail() {
+		return userEmail;
 	}
 }
